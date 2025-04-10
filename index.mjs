@@ -135,17 +135,18 @@ app.get("/api/user/:user", async (req, res) => {
       message: "Invalid session",
     });
   }
-  // send the switch data as json response
-  res
-    .status(200)
-    .json([
+  const value = {values:[
       sw.states[0] + 1,
       sw.states[1] + 1,
       sw.states[2] + 1,
       sw.states[3] + 1,
       sw.states[4] + 1,
       sw.states[5] + 1,
-    ]);
+    ]}
+  // send the switch data as json response
+  res
+    .status(200)
+    .json(value);
 });
 
 app.get("/admin/:sessionID/faults", async (req, res) => {
