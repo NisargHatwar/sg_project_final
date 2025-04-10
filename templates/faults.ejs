@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faults Dashboard</title>
+    <link rel="stylesheet" href="/styles/faults.css" />
+  </head>
+  <body>
+    <h1>Faults Dashboard</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Fault Type</th>
+          <th>Reclose Attempts</th>
+          <th>Time</th>
+          <th>Voltage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (faults.length > 0) { %> <% faults.forEach((fault, index) => { %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= fault.fault_type %></td>
+          <td><%= fault.reclose_attempts %></td>
+          <td><%= new Date(fault.time).toLocaleString() %></td>
+          <td><%= fault.voltage %> V</td>
+        </tr>
+        <% }); %> <% } else { %>
+        <tr>
+          <td colspan="5">No faults recorded</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+  <script>
+    // Reload after every 5 seconds
+    setInterval(() => {
+      window.location.reload();
+    }, 5000);
+  </script>
+</html>

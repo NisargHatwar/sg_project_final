@@ -1,0 +1,37 @@
+[
+  {
+    "username": "boss",
+    "password": "boss123",
+    "isAdmin": true
+  },
+  {
+    "username": "L1",
+    "password": "111",
+    "isAdmin": false
+  },
+  {
+    "username": "L2",
+    "password": "222",
+    "isAdmin": false
+  },
+  {
+    "username": "L3",
+    "password": "333",
+    "isAdmin": false
+  },
+  {
+    "username": "L4",
+    "password": "444",
+    "isAdmin": false
+  },
+  {
+    "username": "L5",
+    "password": "555",
+    "isAdmin": false
+  },
+  {
+    "username": "L6",
+    "password": "666",
+    "isAdmin": false
+  }
+]

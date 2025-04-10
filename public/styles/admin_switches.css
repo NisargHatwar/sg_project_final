@@ -1,0 +1,70 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.users-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.user-section {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.user-section h2 {
+  margin: 0 0 10px;
+  color: #007bff;
+}
+
+.switch-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.on {
+  background-color: #28a745;
+  color: #fff;
+}
+
+button.off {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button.main-switch {
+  font-size: 18px;
+  padding: 15px 30px;
+  border: 2px solid #333;
+}
+
+button.sub-switch {
+  font-size: 14px;
+  padding: 10px 20px;
+}

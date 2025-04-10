@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= username %></title>
+    <link rel="stylesheet" href="/styles/user.css" />
+  </head>
+  <body>
+    <h1>Welcome to Smart Grid</h1>
+    <div class="switch-container">
+      <% const states = [s0, s1, s2, s3, s4, s5, s6]; %> <% for (let i = 0; i <
+      states.length; i++) { %>
+      <button
+        id="s<%= i %>"
+        class="<%= i === 0 ? 'main-switch' : 'sub-switch' %> <%= states[i] ? 'on' : 'off' %>"
+      >
+        <%= states[i] ? (i === 0 ? "Main On" : "On") : (i === 0 ? "Main Off" :
+        "Off") %>
+      </button>
+      <% } %>
+    </div>
+    <div>
+      <a href="/login">Logout</a>
+    </div>
+    <script>
+      // Initialize states array with server-provided values
+      const states = [<%= s0 %>, <%= s1 %>, <%= s2 %>, <%= s3 %>, <%= s4 %>, <%= s5 %>, <%= s6 %>];
+
+      // Function to send a POST request to toggle the switch
+      function postReq(i) {
+        const unnum = "<%= unnum %>";
+        const data = { unnum, sw_no: i };
+
+        fetch(`/user/${unnum}/${i}`, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json; charset=UTF-8",
+          },
+        })
+          .then((response) => {
+            if (!response.ok) {
+              console.error("Network response was not okay");
+              return;
+            }
+            return response.json();
+          })
+          .then((result) => {
+            console.log("Switch toggled successfully:", result);
+            // Update the button state dynamically without reloading
+            const button = document.getElementById(`s${i}`);
+            states[i] = !states[i]; // Toggle the state
+            button.textContent = states[i]
+              ? i === 0
+                ? "Main On"
+                : "On"
+              : i === 0
+              ? "Main Off"
+              : "Off";
+            button.className = `${i === 0 ? 'main-switch' : 'sub-switch'} ${
+              states[i] ? 'on' : 'off'
+            }`;
+          })
+          .catch((err) => {
+            console.error("There was a problem with your fetch operation:", err);
+          });
+      }
+
+      // Attach event listeners to all buttons
+      for (let i = 0; i < states.length; i++) {
+        const button = document.getElementById(`s${i}`);
+        button.addEventListener("click", () => postReq(i));
+      }
+    </script>
+  </body>
+</html>
