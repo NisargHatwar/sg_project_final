@@ -142,6 +142,7 @@ app.get("/api/user/:user", async (req, res) => {
       sw.states[3] + 1,
       sw.states[4] + 1,
       sw.states[5] + 1,
+      sw.states[6] + 1
     ]}
   // send the switch data as json response
   res
